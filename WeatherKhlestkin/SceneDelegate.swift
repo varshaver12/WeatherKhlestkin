@@ -17,8 +17,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.windowScene = scene
         
-        // TODO: Заменить VC
-        let navigationController = UINavigationController(rootViewController: UIViewController())
+        let mainVC = MainViewController()
+        let navigationController = UINavigationController(rootViewController: mainVC)
         navigationController.navigationBar.barStyle = .default
         navigationController.navigationBar.layoutIfNeeded()
         

@@ -6,3 +6,20 @@
 //
 
 import Foundation
+
+protocol MainRouterProtocol: AnyObject {
+
+}
+
+class MainRouter {
+    
+    weak var viewController: MainViewController!
+    
+    init(viewController: MainViewController) {
+        self.viewController = viewController
+    }
+}
+
+extension MainRouter: MainRouterProtocol {
+
+}
