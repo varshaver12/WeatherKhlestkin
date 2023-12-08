@@ -11,7 +11,7 @@ protocol MainPresenterProtocol: AnyObject {
     func viewDidLoad()
 }
 
-class MainPresenter {
+final class MainPresenter {
     
     weak var view: MainViewProtocol!
     var interactor: MainInteractorProtocol!

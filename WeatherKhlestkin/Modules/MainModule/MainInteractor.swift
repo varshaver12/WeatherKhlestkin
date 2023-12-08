@@ -15,7 +15,7 @@ protocol MainInteractorOutputProtocol: AnyObject {
 
 }
 
-class MainInteractor {
+final class MainInteractor {
     
     weak var presenter: MainInteractorOutputProtocol!
     

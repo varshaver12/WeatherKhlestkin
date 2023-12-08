@@ -11,10 +11,16 @@ protocol MainViewProtocol: AnyObject {
     
 }
 
-class MainViewController: BaseViewController {
+final class MainViewController: BaseViewController {
+    
+    //MARK: - Properties
     
     var presenter: MainPresenterProtocol!
     private let configurator: MainConfiguratorProtocol = MainCofigurator()
+    
+    private lazy var mainTopView = MainTopView()
+    
+    //MARK: - Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
