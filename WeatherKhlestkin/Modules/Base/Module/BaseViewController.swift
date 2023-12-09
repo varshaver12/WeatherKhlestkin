@@ -19,7 +19,7 @@ class BaseViewController : UIViewController {
     //MARK: - Setup Views
     
     func setupViews() {
-        view.backgroundColor = .gray
+        
     }
     
     func setupConstraints() {

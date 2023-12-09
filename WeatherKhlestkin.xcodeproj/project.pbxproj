@@ -22,6 +22,7 @@
 		7C6E91F92B23607C00C88351 /* UIColorExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6E91F82B23607C00C88351 /* UIColorExt.swift */; };
 		7C6E91FD2B23684800C88351 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6E91FC2B23684800C88351 /* BaseView.swift */; };
 		7C6E92002B2391DB00C88351 /* UIViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6E91FF2B2391DB00C88351 /* UIViewExt.swift */; };
+		7C6E92062B24502500C88351 /* UIViewControllerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6E92052B24502500C88351 /* UIViewControllerExt.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		7C6E91F82B23607C00C88351 /* UIColorExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExt.swift; sourceTree = "<group>"; };
 		7C6E91FC2B23684800C88351 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		7C6E91FF2B2391DB00C88351 /* UIViewExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExt.swift; sourceTree = "<group>"; };
+		7C6E92052B24502500C88351 /* UIViewControllerExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExt.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +166,7 @@
 			children = (
 				7C6E91F82B23607C00C88351 /* UIColorExt.swift */,
 				7C6E91FF2B2391DB00C88351 /* UIViewExt.swift */,
+				7C6E92052B24502500C88351 /* UIViewControllerExt.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -272,6 +275,7 @@
 				7C6E91EF2B23543600C88351 /* BaseViewController.swift in Sources */,
 				7C6E91F92B23607C00C88351 /* UIColorExt.swift in Sources */,
 				7C6E91E52B2343AE00C88351 /* MainPresenter.swift in Sources */,
+				7C6E92062B24502500C88351 /* UIViewControllerExt.swift in Sources */,
 				7C6E91E92B2343C000C88351 /* MainRouter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

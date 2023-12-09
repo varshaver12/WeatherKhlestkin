@@ -9,6 +9,8 @@ import Foundation
 
 protocol MainPresenterProtocol: AnyObject {
     func viewDidLoad()
+    func findButtonDidTap()
+    func favoritesListButtonDidTap()
 }
 
 final class MainPresenter {
@@ -25,9 +27,16 @@ final class MainPresenter {
 // MARK: - MainPresenterProtocol
 extension MainPresenter: MainPresenterProtocol {
     func viewDidLoad() {
-        
+        self.view.setupUIBinding(cityName: "Москва", temperature: "-32 🌨️", temperatureNote: "Холодновато")
     }
-
+    
+    func findButtonDidTap() {
+        router?.pushToFindViewController(view: view)
+    }
+    
+    func favoritesListButtonDidTap() {
+        router?.pushToFavoritesViewController(view: view)
+    }
 }
 
 // MARK: - MainInteractorOutputProtocol
