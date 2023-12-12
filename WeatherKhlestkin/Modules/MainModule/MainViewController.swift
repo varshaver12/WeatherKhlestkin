@@ -8,7 +8,7 @@
 import UIKit
 
 protocol MainViewProtocol: AnyObject {
-    func setupUIBinding(cityName: String, temperature: String, temperatureNote: String)
+    func setupUI(cityName: String, temperature: String, temperatureNote: String)
 }
 
 final class MainViewController: BaseViewController {
@@ -25,6 +25,7 @@ final class MainViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        configureAppearance()
         setupViews()
         setupConstraints()
         configurator.configure(with: self)
@@ -32,12 +33,14 @@ final class MainViewController: BaseViewController {
         setupEventBinding()
     }
     
+    private func configureAppearance() {
+        view.backgroundColor = .gray
+        hideNavigationBar()
+    }
     //MARK: - Setup Views
     
     override func setupViews() {
-        view.backgroundColor = .gray
         view.setupView(mainTopView)
-        hideNavigationBar()
     }
     
     override func setupConstraints() {
@@ -46,14 +49,14 @@ final class MainViewController: BaseViewController {
             mainTopView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             mainTopView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             mainTopView.topAnchor.constraint(equalTo: view.topAnchor),
-            mainTopView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height * CGFloat(0.38))
+            mainTopView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height * CGFloat(0.3))
         ])
     }
 }
 
 extension MainViewController: MainViewProtocol {
     
-    func setupUIBinding(cityName: String, temperature: String, temperatureNote: String) {
+    func setupUI(cityName: String, temperature: String, temperatureNote: String) {
         DispatchQueue.main.async {
             self.mainTopView.configure(cityName: cityName, temperature: temperature, temperatureNote: temperatureNote)
         }

@@ -27,7 +27,7 @@ final class MainPresenter {
 // MARK: - MainPresenterProtocol
 extension MainPresenter: MainPresenterProtocol {
     func viewDidLoad() {
-        self.view.setupUIBinding(cityName: "Москва", temperature: "-32 🌨️", temperatureNote: "Холодновато")
+        self.view.setupUI(cityName: "Москва", temperature: "-32 🌨️", temperatureNote: "Холодновато")
     }
     
     func findButtonDidTap() {

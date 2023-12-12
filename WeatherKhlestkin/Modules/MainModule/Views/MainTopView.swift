@@ -17,12 +17,12 @@ final class MainTopView: BaseView {
     
     //MARK: - Properties
     
-    private let configuration = UIImage.SymbolConfiguration(pointSize: 25, weight: .regular, scale: .default)
+    private let configuration = UIImage.SymbolConfiguration(pointSize: 22, weight: .regular, scale: .default)
     private lazy var findLocationButton: UIButton = {
         let button = UIButton()
         button.sizeToFit()
         button.tintColor = .black
-        button.setImage(UIImage(systemName: "location.viewfinder", withConfiguration: configuration), for: .normal)
+        button.setImage(UIImage(systemName: "magnifyingglass", withConfiguration: configuration), for: .normal)
         button.addTarget(self, action: #selector(findButtonTap), for: .touchUpInside)
         return button
     }()
@@ -31,7 +31,7 @@ final class MainTopView: BaseView {
         let button = UIButton()
         button.sizeToFit()
         button.tintColor = .black
-        button.setImage(UIImage(systemName: "star", withConfiguration: configuration), for: .normal)
+        button.setImage(UIImage(systemName: "text.badge.star", withConfiguration: configuration), for: .normal)
         button.addTarget(self, action: #selector(favoritesListButtonTap), for: .touchUpInside)
         return button
     }()
@@ -45,7 +45,7 @@ final class MainTopView: BaseView {
     }()
     private lazy var temperature: UILabel = {
         let label = UILabel()
-        label.font = Resouces.Fonts.helvelticaRegular(with: 32)
+        label.font = Resouces.Fonts.helvelticaRegular(with: 36)
         label.textColor = Resouces.Colors.cityName
         label.textAlignment = .center
         return label
@@ -76,7 +76,7 @@ extension MainTopView {
         
         NSLayoutConstraint.activate([
             temperature.centerXAnchor.constraint(equalTo: centerXAnchor),
-            temperature.centerYAnchor.constraint(equalTo: centerYAnchor),
+            temperature.centerYAnchor.constraint(equalTo: centerYAnchor, constant: 12),
             temperature.leadingAnchor.constraint(equalTo: leadingAnchor),
             temperature.trailingAnchor.constraint(equalTo: trailingAnchor),
             temperature.heightAnchor.constraint(equalToConstant: 30),
@@ -125,7 +125,6 @@ extension MainTopView {
 @objc extension MainTopView {
 
     private func findButtonTap() {
-        print("@objc private func findButtonTap")
         guard let findButtonTap = findButtonDidTap else { return }
         findButtonTap()
     }
