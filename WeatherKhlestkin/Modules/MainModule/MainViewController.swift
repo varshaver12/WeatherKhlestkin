@@ -19,6 +19,15 @@ final class MainViewController: BaseViewController {
     private let configurator: MainConfiguratorProtocol = MainCofigurator()
     
     private lazy var mainTopView = MainTopView()
+    private lazy var collectionView: IHCollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        layout.minimumLineSpacing = 0
+        layout.headerReferenceSize = CGSize(width: UIScreen.main.bounds.width,
+                                            height: UIScreen.main.bounds.height * 0.15)
+        let view = IHCollectionView(frame: .zero, collectionViewLayout: layout)
+        return view
+    }()
     
     //MARK: - Life Cycle
     
@@ -41,6 +50,7 @@ final class MainViewController: BaseViewController {
     
     override func setupViews() {
         view.setupView(mainTopView)
+        view.setupView(collectionView)
     }
     
     override func setupConstraints() {
@@ -49,12 +59,22 @@ final class MainViewController: BaseViewController {
             mainTopView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             mainTopView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             mainTopView.topAnchor.constraint(equalTo: view.topAnchor),
-            mainTopView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height * CGFloat(0.3))
+            mainTopView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height * CGFloat(0.3)),
+            
+            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            collectionView.topAnchor.constraint(equalTo: mainTopView.bottomAnchor, constant: 3)
         ])
     }
 }
 
 extension MainViewController: MainViewProtocol {
+    
+    func reloadCollectionView() {
+        DispatchQueue.main.async {
+            self.collectionView.reloadData()
+        }
+    }
     
     func setupUI(cityName: String, temperature: String, temperatureNote: String) {
         DispatchQueue.main.async {
