@@ -9,12 +9,21 @@ import UIKit
 
 class HourlyTempCollectionCell: UICollectionViewCell {
     
+    //MARK: - UI Metrics
+    
+    private struct UI {
+        static let labelHeight = CGFloat(15)
+        static let miniMargin = CGFloat(5)
+        static let basicMargin = CGFloat(10)
+    }
+    
     //MARK: - Properties
+    
     // Ветер
     private lazy var hourLabel: UILabel = {
         let label = UILabel()
-        label.font = Resouces.Fonts.helvelticaRegular(with: 17)
-        label.textColor = .white
+        label.font = Resouces.Fonts.helvelticaRegular(with: 14)
+        label.textColor = .black
         label.textAlignment = .left
         return label
     }()
@@ -27,50 +36,59 @@ class HourlyTempCollectionCell: UICollectionViewCell {
     // Давление
     private lazy var temperatureLabel: UILabel = {
         let label = UILabel()
-        label.font = Resouces.Fonts.helvelticaRegular(with: 17)
-        label.textColor = .white
+        label.font = Resouces.Fonts.helvelticaRegular(with: 14)
+        label.textColor = .black
         label.textAlignment = .left
         return label
     }()
-
     
     //MARK: - Init
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupViews()
-        constaintViews()
         configureAppearance()
+        setupViews()
+        setupConstraints()
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
     }
 }
 
+//MARK: - Setup Views
+
 extension HourlyTempCollectionCell {
+    
+    private func configureAppearance() {
+        backgroundColor = .clear
+    }
+    
     private func setupViews() {
+
         setupView(hourLabel)
         setupView(weatherImageView)
         setupView(temperatureLabel)
     }
     
-    private func constaintViews() {
+    private func setupConstraints() {
+        
         NSLayoutConstraint.activate([
-            hourLabel.topAnchor.constraint(equalTo: topAnchor, constant: 5),
+            hourLabel.topAnchor.constraint(equalTo: topAnchor),
             hourLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
+            hourLabel.heightAnchor.constraint(equalToConstant: UI.labelHeight),
             
-            weatherImageView.topAnchor.constraint(equalTo: hourLabel.bottomAnchor, constant: 10),
-            weatherImageView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            weatherImageView.bottomAnchor.constraint(equalTo: temperatureLabel.topAnchor, constant: 10),
+            weatherImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: UI.basicMargin),
+            weatherImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -UI.basicMargin),
+            weatherImageView.topAnchor.constraint(equalTo: hourLabel.bottomAnchor, constant: UI.basicMargin),
+            weatherImageView.bottomAnchor.constraint(equalTo: temperatureLabel.topAnchor, constant: -UI.basicMargin),
             
             temperatureLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-            temperatureLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 5)
+            temperatureLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -UI.miniMargin),
+            temperatureLabel.heightAnchor.constraint(equalToConstant: UI.labelHeight)
         ])
-    }
-    
-    private func configureAppearance() {
-        backgroundColor = .clear
+        
+
     }
 }
 
@@ -78,11 +96,9 @@ extension HourlyTempCollectionCell {
 
 extension HourlyTempCollectionCell {
     
-    // TODO: Исправить на работу с моделью
-    func configureCell(hourStr: String, weatherStr: String, temperatureStr: String) {
-        hourLabel.text = hourStr
-        weatherImageView.image = UIImage()
-        temperatureLabel.text = temperatureStr
+    func configureCell(currentWeather: [CurrentWeather], item: Int) {
+        hourLabel.text = currentWeather[item].hour
+        weatherImageView.image = UIImage(named: currentWeather[item].conditionImage)
+        temperatureLabel.text = currentWeather[item].temp
     }
-    
 }

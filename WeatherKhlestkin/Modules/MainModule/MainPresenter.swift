@@ -9,6 +9,7 @@ import Foundation
 
 protocol MainPresenterProtocol: AnyObject {
     func viewDidLoad()
+    func viewWillAppear()
     func findButtonDidTap()
     func favoritesListButtonDidTap()
 }
@@ -26,8 +27,12 @@ final class MainPresenter {
 
 // MARK: - MainPresenterProtocol
 extension MainPresenter: MainPresenterProtocol {
+    func viewWillAppear() {
+        interactor?.fetchWeatherData()
+    }
+
     func viewDidLoad() {
-        self.view.setupUI(cityName: "Москва", temperature: "-32 🌨️", temperatureNote: "Холодновато")
+        
     }
     
     func findButtonDidTap() {
@@ -41,5 +46,12 @@ extension MainPresenter: MainPresenterProtocol {
 
 // MARK: - MainInteractorOutputProtocol
 extension MainPresenter: MainInteractorOutputProtocol {
+    func handleResult(_ response: APIWeatherData, cityName: String) {
 
+        let weatherModel = CurrentWeather.getViewModels(with: response)
+
+        view?.setupUI(with: weatherModel, cityName: cityName)
+        view?.reloadCollectionView()
+        print("🧘🏻‍♂️")
+    }
 }

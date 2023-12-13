@@ -9,17 +9,26 @@ import UIKit
 
 class InfoHourlyCollectionView: UICollectionView {
     
+    //MARK: - UI Metrics
+    
+    private struct UI {
+        static let cellWidth = CGFloat(65)
+    }
+    
     //MARK: - CallBack
     
-    var additionalInfoCollectionCellDidLoad: ((AdditionalInfoCollectionCell, IndexPath) -> Void)?
-    var hourlyTempCollectionCellDidLoad: ((HourlyTempCollectionCell, IndexPath) -> Void)?
+    var hourlyTempCollectionCellDidLoad: ((HourlyTempCollectionCell, IndexPath) -> Void)? {
+        willSet {
+            print("🧘🏻‍♂️🧘🏻‍♂️🧘🏻‍♂️🧘🏻‍♂️")
+        }
+    }
     
     //MARK: - Init
     
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
         super.init(frame: frame, collectionViewLayout: layout)
+        
         setupViews()
-        configureAppearance()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -32,66 +41,47 @@ class InfoHourlyCollectionView: UICollectionView {
 extension InfoHourlyCollectionView {
     
     private func setupViews() {
-        register(AdditionalInfoCollectionCell.self,
-                 forCellWithReuseIdentifier: String(describing: AdditionalInfoCollectionCell.self))
-        register(HourlyTempCollectionCell.self,
-                 forCellWithReuseIdentifier: String(describing: HourlyTempCollectionCell.self))
-    }
-    
-    private func configureAppearance() {
         backgroundColor = .clear
         showsHorizontalScrollIndicator = false
         dataSource = self
         delegate = self
+        register(HourlyTempCollectionCell.self, forCellWithReuseIdentifier: String(describing: HourlyTempCollectionCell.self))
     }
 }
 
-//MARK: - UICollectionViewDataSource
+//MARK: - UICollectionViewDataSource & UICollectionViewDelegateFlowLayout
 
 extension InfoHourlyCollectionView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 25
+        print("return 24🧘🏻‍♂️")
+        return 24
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if indexPath.row == 0 {
-            let cellCollectionView = self.dequeueReusableCell(withReuseIdentifier: String(describing: AdditionalInfoCollectionCell.self),
-                                                for: indexPath)
-            guard let cell = cellCollectionView as? AdditionalInfoCollectionCell else {
-                fatalError(
-                    "Failed to dequeue a cell with identifier \(String(describing: AdditionalInfoCollectionCell.self))"
-                )
-            }
-            if let additionalInfoCollectionCellDidLoad = self.additionalInfoCollectionCellDidLoad {
-                additionalInfoCollectionCellDidLoad(cell, indexPath)
-            } else {
-                return cell
-            }
-        } else {
-            let cellCollectionView = self.dequeueReusableCell(withReuseIdentifier: String(describing: HourlyTempCollectionCell.self),
-                                                for: indexPath)
-            guard let cell = cellCollectionView as? HourlyTempCollectionCell else {
-                fatalError(
-                    "Failed to dequeue a cell with identifier \(String(describing: HourlyTempCollectionCell.self))"
-                )
-            }
-            
-            if let hourlyTempCollectionCellDidLoad = self.hourlyTempCollectionCellDidLoad {
-                hourlyTempCollectionCellDidLoad(cell, indexPath)
-            } else {
-                return cell
-            }
+        
+        let cellCollectionView = self.dequeueReusableCell(withReuseIdentifier: String(describing: HourlyTempCollectionCell.self), for: indexPath)
+        guard let cell = cellCollectionView as? HourlyTempCollectionCell else {
+            fatalError(
+                "Failed to dequeue a cell with identifier \(String(describing: HourlyTempCollectionCell.self))"
+            )
         }
-        let cell = UICollectionViewCell()
+        
+        if let hourlyCellDidLoad = self.hourlyTempCollectionCellDidLoad {
+            hourlyCellDidLoad(cell, indexPath)
+            print("🧘🏻‍♂️🧘🏻‍♂️🧘🏻‍♂️🧘🏻‍♂️🧘🏻‍♂️")
+        } else {
+            print("🧘🏻‍♂️🧘🏻‍♂️🧘🏻‍♂️🧘🏻‍♂️🧘🏻‍♂️")
+            return cell
+        }
+        
         return cell
     }
-    
 }
-
-//MARK: - UICollectionViewDelegateFlowLayout
 
 extension InfoHourlyCollectionView: UICollectionViewDelegateFlowLayout {
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 70, height: self.frame.height)
+        return CGSize(width: UI.cellWidth, height: self.frame.height)
     }
 }
+

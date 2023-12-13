@@ -31,13 +31,9 @@ class WeatherService {
     
     func handleRequest(url: URL, completion: @escaping (Result<APIWeatherData, WeatherServiceError>) -> Void) {
         
-        let task = URLSession.shared.dataTask(with: url) { data, response, error in
+        let task = URLSession.shared.dataTask(with: url) { data, _, error in
             guard error == nil else {
                 return completion(.failure(.clientError))
-            }
-            
-            guard let header = response as? HTTPURLResponse, (200..<300) ~= header.statusCode else {
-                return completion(.failure(.invalidStatusCode))
             }
             
             guard let data = data else {

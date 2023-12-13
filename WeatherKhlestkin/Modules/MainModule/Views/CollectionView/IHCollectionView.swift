@@ -8,18 +8,29 @@
 import  UIKit
 
 class IHCollectionView: UICollectionView {
-
+    
+    //MARK: - UI Metrics
+    
+    private struct UI {
+        static let dailyCellHeightRatio = CGFloat(0.42)
+        static let summaryCellHeightRatio = CGFloat(0.1)
+        static let subInfoCellHeightRatio = CGFloat(0.25)
+    }
+    
     // MARK: - Callback
+    
+    var hourlyCollectionDidLoad: ((InfoHourlyCollectionReusabbleView) -> Void)? {
+        willSet {
+            print("hourlyCollectionDidLoad")
+        }
+    }
 
-    var infoHourlyCollectionDidLoad: ((InfoHourlyCollectionReusabbleView) -> Void)?
     
     //MARK: - Init
     
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
         super.init(frame: frame, collectionViewLayout: layout)
-
-        configureAppearance()
-        configureViews()
+        setupViews()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -27,7 +38,8 @@ class IHCollectionView: UICollectionView {
     }
     
     deinit {
-        infoHourlyCollectionDidLoad = nil
+        hourlyCollectionDidLoad = nil
+
     }
 }
 
@@ -35,19 +47,20 @@ class IHCollectionView: UICollectionView {
 
 extension IHCollectionView {
     
-    private func configureAppearance() {
+    private func setupViews() {
         dataSource = self
         delegate = self
         
         showsVerticalScrollIndicator = false
         backgroundColor = .clear
+        
+        configureSubViews()
     }
     
-    private func configureViews() {
+    private func configureSubViews() {
         register(InfoHourlyCollectionReusabbleView.self,
                  forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
                  withReuseIdentifier: String(describing: InfoHourlyCollectionReusabbleView.self))
-        
     }
 }
 
@@ -56,17 +69,17 @@ extension IHCollectionView {
 extension IHCollectionView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
-        let topHorizontalCollection = self.dequeueReusableSupplementaryView(ofKind: kind,
+        let header = self.dequeueReusableSupplementaryView(ofKind: kind,
                                                            withReuseIdentifier: String(describing: InfoHourlyCollectionReusabbleView.self),
                                                            for: indexPath) as! InfoHourlyCollectionReusabbleView
         
-        if let infoHourlyCollectionDidLoad = infoHourlyCollectionDidLoad {
-            infoHourlyCollectionDidLoad(topHorizontalCollection)
+        if let hourlyCollectionDidLoad = hourlyCollectionDidLoad {
+            hourlyCollectionDidLoad(header)
         } else {
-            return topHorizontalCollection
+            return header
         }
         
-        return topHorizontalCollection
+        return header
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -74,18 +87,7 @@ extension IHCollectionView: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        switch indexPath.item {
-        case 0:
-            return UICollectionViewCell()
-        case 1:
-            return UICollectionViewCell()
-        case 2:
-            return UICollectionViewCell()
-        default:
-            break
-        }
-        
+
         return UICollectionViewCell()
     }
 }
@@ -94,21 +96,7 @@ extension IHCollectionView: UICollectionViewDataSource {
 
 extension IHCollectionView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        switch indexPath.item {
-        case 0:
-            return CGSize(width: UIScreen.main.bounds.width,
-                          height: UIScreen.main.bounds.height * 0.4)
-        case 1:
-            return CGSize(width: UIScreen.main.bounds.width,
-                          height: UIScreen.main.bounds.height * 0.1)
-        case 2:
-            return CGSize(width: UIScreen.main.bounds.width,
-                          height: UIScreen.main.bounds.height * 0.3)
-        default:
-            break
-        }
-        
+
         return CGSize(width: UIScreen.main.bounds.width, height: 100)
     }
 }

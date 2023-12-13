@@ -19,12 +19,12 @@ enum WeatherServiceError: Error, LocalizedError {
         switch self {
         case .clientError:
             return "clientError"
-        case .invalidStatusCode:
-            return "invalidStatusCode"
         case .noData:
             return "noData"
         case .decodeError:
             return "decodeError"
+        case .invalidStatusCode:
+            return "invalidStatusCode"
         }
     }
 }

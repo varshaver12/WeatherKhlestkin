@@ -10,8 +10,8 @@ import UIKit
 class InfoHourlyCollectionReusabbleView: UICollectionReusableView {
     
     //MARK: - Properties
-
-    lazy var infoHourlyCollectionView: InfoHourlyCollectionView = {
+    
+    lazy var hourlyCollectionView: InfoHourlyCollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         layout.minimumLineSpacing = 0
@@ -25,8 +25,6 @@ class InfoHourlyCollectionReusabbleView: UICollectionReusableView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupViews()
-        configureAppearance()
-        setupConstraints()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -39,19 +37,18 @@ class InfoHourlyCollectionReusabbleView: UICollectionReusableView {
 extension InfoHourlyCollectionReusabbleView {
     
     private func setupViews() {
-        setupView(infoHourlyCollectionView)
-    }
-    
-    private func configureAppearance() {
         backgroundColor = .clear
+        setupView(hourlyCollectionView)
+        setupConstraints()
     }
     
     private func setupConstraints() {
         NSLayoutConstraint.activate([
-            infoHourlyCollectionView.topAnchor.constraint(equalTo: topAnchor),
-            infoHourlyCollectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            infoHourlyCollectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            infoHourlyCollectionView.bottomAnchor.constraint(equalTo: bottomAnchor)
+            hourlyCollectionView.topAnchor.constraint(equalTo: topAnchor),
+            hourlyCollectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            hourlyCollectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            hourlyCollectionView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
+
     }
 }

@@ -7,11 +7,21 @@
 
 import UIKit
 
+
+
 protocol MainViewProtocol: AnyObject {
-    func setupUI(cityName: String, temperature: String, temperatureNote: String)
+    func reloadCollectionView()
+    func setupUI(with currentWeather: [CurrentWeather], cityName: String)
 }
 
 final class MainViewController: BaseViewController {
+    
+    //MARK: - UI Metrics
+    
+    private struct UI {
+        static let headerViewHeightRatio = CGFloat(0.38)
+        static let hourlyCellHeightRatio = CGFloat(0.12)
+    }
     
     //MARK: - Properties
     
@@ -39,14 +49,20 @@ final class MainViewController: BaseViewController {
         setupConstraints()
         configurator.configure(with: self)
         presenter.viewDidLoad()
-        setupEventBinding()
+        setupEvent()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        // better with observer
+        presenter?.viewWillAppear()
+    }
+    
+    //MARK: - Setup Views and config
     private func configureAppearance() {
-        view.backgroundColor = .gray
+        view.backgroundColor = .white
         hideNavigationBar()
     }
-    //MARK: - Setup Views
     
     override func setupViews() {
         view.setupView(mainTopView)
@@ -59,11 +75,11 @@ final class MainViewController: BaseViewController {
             mainTopView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             mainTopView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             mainTopView.topAnchor.constraint(equalTo: view.topAnchor),
-            mainTopView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height * CGFloat(0.3)),
+            mainTopView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height * UI.headerViewHeightRatio),
             
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            collectionView.topAnchor.constraint(equalTo: mainTopView.bottomAnchor, constant: 3)
+            collectionView.topAnchor.constraint(equalTo: mainTopView.bottomAnchor)
         ])
     }
 }
@@ -76,13 +92,23 @@ extension MainViewController: MainViewProtocol {
         }
     }
     
-    func setupUI(cityName: String, temperature: String, temperatureNote: String) {
+    func setupUI(with currentWeather: [CurrentWeather], cityName: String) {
         DispatchQueue.main.async {
-            self.mainTopView.configure(cityName: cityName, temperature: temperature, temperatureNote: temperatureNote)
+            self.mainTopView.configure(cityName: cityName, currentWeather: currentWeather)
+            
+            self.collectionView.hourlyCollectionDidLoad = { header in
+                
+                header.hourlyCollectionView.hourlyTempCollectionCellDidLoad = { cell, indexPath in
+                    cell.configureCell(currentWeather: currentWeather, item: indexPath.item)
+                }
+                header.hourlyCollectionView.reloadData()
+                
+            }
+            
         }
     }
     
-    func setupEventBinding() {
+    func setupEvent() {
 
         mainTopView.findButtonDidTap = { [weak self] in
             self?.presenter?.findButtonDidTap()

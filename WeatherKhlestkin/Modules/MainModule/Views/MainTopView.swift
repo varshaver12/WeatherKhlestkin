@@ -113,10 +113,12 @@ extension MainTopView {
 //MARK: - Configure View
 
 extension MainTopView {
-    func configure(cityName: String, temperature: String, temperatureNote: String) {
+    func configure(cityName: String, currentWeather: [CurrentWeather]) {
+        guard let firstData = currentWeather.first else { return }
+        
         self.cityName.text = cityName
-        self.temperature.text = temperature
-        self.temperatureNote.text = temperatureNote
+        self.temperature.text = firstData.tempOriginal
+        self.temperatureNote.text = firstData.description
     }
 }
 
