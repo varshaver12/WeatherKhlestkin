@@ -7,6 +7,7 @@
 
 import UIKit
 
+
 protocol MainViewProtocol: AnyObject {
     func reloadCollectionView()
     func setupUI(with currentWeather: [CurrentWeather], cityName: String)
@@ -52,7 +53,7 @@ final class MainViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        // better with observer
+        
         presenter?.viewWillAppear()
     }
     
@@ -108,14 +109,8 @@ extension MainViewController: MainViewProtocol {
     }
     
     func setupEvent() {
-
-        mainTopView.findButtonDidTap = { [weak self] in
-            self?.presenter?.findButtonDidTap()
+        mainTopView.findButtonDidTap = {
+            self.presenter?.findButtonDidTap()
         }
-        
-        mainTopView.favoritesListButtonDidTap = { [weak self] in
-            self?.presenter?.favoritesListButtonDidTap()
-        }
-        
     }
 }

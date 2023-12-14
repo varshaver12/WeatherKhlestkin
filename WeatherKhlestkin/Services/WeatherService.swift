@@ -12,19 +12,17 @@ class WeatherService {
     private let urlString = "https://api.openweathermap.org/data/2.5/forecast"
     private let apiKey = "e16ad2ad4f6249dd11aa780e8c04528b"
     
-    func fetchWeather(byCity city: String, completion: @escaping (Result<APIWeatherData, WeatherServiceError>) -> Void) {
-        //Returns the character set for characters allowed in a query URL component.
-        //(Korean) -> (url component)
-        let cityName = city.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? city
+    func fetchWeather(lat: Double, lon: Double, completion: @escaping (Result<APIWeatherData, WeatherServiceError>) -> Void) {
         
         var urlComponent = URLComponents(string: urlString)
         
         urlComponent?.queryItems = [
-            URLQueryItem(name: "q", value: "\(cityName)"),
             URLQueryItem(name: "APPID", value: "\(apiKey)"),
+            URLQueryItem(name: "lat", value: "\(lat)"),
+            URLQueryItem(name: "lon", value: "\(lon)"),
             URLQueryItem(name: "units", value: "metric")
         ]
-        
+
         guard let url = urlComponent?.url else { return }
         handleRequest(url: url, completion: completion)
     }

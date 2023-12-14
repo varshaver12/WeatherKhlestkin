@@ -19,11 +19,7 @@ class IHCollectionView: UICollectionView {
     
     // MARK: - Callback
     
-    var hourlyCollectionDidLoad: ((InfoHourlyCollectionReusabbleView) -> Void)? {
-        willSet {
-            print("hourlyCollectionDidLoad")
-        }
-    }
+    var hourlyCollectionDidLoad: ((InfoHourlyCollectionReusabbleView) -> Void)? 
 
     
     //MARK: - Init

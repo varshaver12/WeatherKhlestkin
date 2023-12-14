@@ -9,7 +9,6 @@ import Foundation
 
 protocol MainRouterProtocol: AnyObject {
     func pushToFindViewController(view: MainViewProtocol)
-    func pushToFavoritesViewController(view: MainViewProtocol)
 }
 
 final class MainRouter {
@@ -23,10 +22,9 @@ final class MainRouter {
 
 extension MainRouter: MainRouterProtocol {
     func pushToFindViewController(view: MainViewProtocol) {
-        print("pushToFindViewController")
+        let findViewController = FindCofigurator.createFindModule()
+
+        viewController.navigationController?.pushViewController(findViewController, animated: true)
     }
     
-    func pushToFavoritesViewController(view: MainViewProtocol) {
-        print("pushToFavoritesViewController")
-    }
 }

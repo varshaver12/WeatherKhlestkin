@@ -5,17 +5,25 @@
 //  Created by 1234 on 13.12.2023.
 //
 
-import Foundation
 import UIKit
 
 protocol FindConfiguratorProtocol: AnyObject {
-    func configure(with viewController: FindViewController)
+    
 }
 
 final class FindCofigurator: FindConfiguratorProtocol {
-    func createFindModule() -> UIViewController {
+
+    static func createFindModule() -> UIViewController {
         let viewController = FindViewController()
         
-        let presenter: FindPresenterProtocol & FindInteractorOutputProtocol = FindPresenter(view: viewController)
+        let presenter: FindPresenterProtocol & FindInteractorOutputProtocol = FindPresenter()
+        
+        viewController.presenter = presenter
+        viewController.presenter?.router = FindRouter()
+        viewController.presenter?.view = viewController
+        viewController.presenter?.interactor = FindInteractor()
+        viewController.presenter?.interactor?.presenter = presenter
+        
+        return viewController
     }
 }

@@ -11,7 +11,6 @@ protocol MainPresenterProtocol: AnyObject {
     func viewDidLoad()
     func viewWillAppear()
     func findButtonDidTap()
-    func favoritesListButtonDidTap()
 }
 
 final class MainPresenter {
@@ -32,16 +31,13 @@ extension MainPresenter: MainPresenterProtocol {
     }
 
     func viewDidLoad() {
-        
+        interactor?.fetchInitialWeatherData()
     }
     
     func findButtonDidTap() {
         router?.pushToFindViewController(view: view)
     }
     
-    func favoritesListButtonDidTap() {
-        router?.pushToFavoritesViewController(view: view)
-    }
 }
 
 // MARK: - MainInteractorOutputProtocol
@@ -52,6 +48,5 @@ extension MainPresenter: MainInteractorOutputProtocol {
 
         view?.setupUI(with: weatherModel, cityName: cityName)
         view?.reloadCollectionView()
-        print("🧘🏻‍♂️")
     }
 }

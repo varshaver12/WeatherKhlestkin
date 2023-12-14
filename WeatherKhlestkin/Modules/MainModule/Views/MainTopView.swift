@@ -12,7 +12,7 @@ final class MainTopView: BaseView {
     // MARK: - Callback
     
     var findButtonDidTap: (() -> ())?
-    var favoritesListButtonDidTap: (() -> ())?
+
     
     
     //MARK: - Properties
@@ -24,15 +24,6 @@ final class MainTopView: BaseView {
         button.tintColor = .black
         button.setImage(UIImage(systemName: "magnifyingglass", withConfiguration: configuration), for: .normal)
         button.addTarget(self, action: #selector(findButtonTap), for: .touchUpInside)
-        return button
-    }()
-    
-    private lazy var favoritesListButton: UIButton = {
-        let button = UIButton()
-        button.sizeToFit()
-        button.tintColor = .black
-        button.setImage(UIImage(systemName: "text.badge.star", withConfiguration: configuration), for: .normal)
-        button.addTarget(self, action: #selector(favoritesListButtonTap), for: .touchUpInside)
         return button
     }()
     
@@ -69,7 +60,6 @@ extension MainTopView {
         setupView(temperature)
         setupView(temperatureNote)
         setupView(findLocationButton)
-        setupView(favoritesListButton)
     }
     override func constaintViews() {
         super.constaintViews()
@@ -95,10 +85,6 @@ extension MainTopView {
             
             findLocationButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             findLocationButton.topAnchor.constraint(equalTo: topAnchor, constant: 70),
-            
-            
-            favoritesListButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
-            favoritesListButton.topAnchor.constraint(equalTo: topAnchor, constant: 70)
         ])
         
     }
@@ -131,9 +117,4 @@ extension MainTopView {
         findButtonTap()
     }
     
-    private func favoritesListButtonTap() {
-        
-        guard let favoritesListButtonTap = favoritesListButtonDidTap else { return }
-        favoritesListButtonTap()
-    }
 }
