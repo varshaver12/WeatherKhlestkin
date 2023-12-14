@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7C5F61332B2A4DFC004767D6 /* FindViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5F61322B2A4DFC004767D6 /* FindViewController.swift */; };
+		7C5F61352B2A4E13004767D6 /* FindPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5F61342B2A4E13004767D6 /* FindPresenter.swift */; };
+		7C5F61372B2A4E22004767D6 /* FindInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5F61362B2A4E22004767D6 /* FindInteractor.swift */; };
+		7C5F61392B2A4E2F004767D6 /* FindRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5F61382B2A4E2F004767D6 /* FindRouter.swift */; };
+		7C5F613B2B2A4E3D004767D6 /* FindConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5F613A2B2A4E3D004767D6 /* FindConfigurator.swift */; };
 		7C6E91CC2B233EF100C88351 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6E91CB2B233EF100C88351 /* AppDelegate.swift */; };
 		7C6E91CE2B233EF100C88351 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6E91CD2B233EF100C88351 /* SceneDelegate.swift */; };
 		7C6E91D52B233EF300C88351 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C6E91D42B233EF300C88351 /* Assets.xcassets */; };
@@ -37,6 +42,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7C5F61322B2A4DFC004767D6 /* FindViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindViewController.swift; sourceTree = "<group>"; };
+		7C5F61342B2A4E13004767D6 /* FindPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindPresenter.swift; sourceTree = "<group>"; };
+		7C5F61362B2A4E22004767D6 /* FindInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindInteractor.swift; sourceTree = "<group>"; };
+		7C5F61382B2A4E2F004767D6 /* FindRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindRouter.swift; sourceTree = "<group>"; };
+		7C5F613A2B2A4E3D004767D6 /* FindConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindConfigurator.swift; sourceTree = "<group>"; };
 		7C6E91C82B233EF100C88351 /* WeatherKhlestkin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherKhlestkin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C6E91CB2B233EF100C88351 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7C6E91CD2B233EF100C88351 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -201,6 +211,11 @@
 		7C6E91FA2B2366EC00C88351 /* FindModule */ = {
 			isa = PBXGroup;
 			children = (
+				7C5F61322B2A4DFC004767D6 /* FindViewController.swift */,
+				7C5F61342B2A4E13004767D6 /* FindPresenter.swift */,
+				7C5F61362B2A4E22004767D6 /* FindInteractor.swift */,
+				7C5F61382B2A4E2F004767D6 /* FindRouter.swift */,
+				7C5F613A2B2A4E3D004767D6 /* FindConfigurator.swift */,
 			);
 			path = FindModule;
 			sourceTree = "<group>";
@@ -349,6 +364,7 @@
 				7CED6A502B2915BF00704A3C /* DateExt.swift in Sources */,
 				7CED6A492B28E15300704A3C /* WeatherService.swift in Sources */,
 				7C6E91F22B23577500C88351 /* MainTopView.swift in Sources */,
+				7C5F61332B2A4DFC004767D6 /* FindViewController.swift in Sources */,
 				7CED6A422B28664200704A3C /* InfoHourlyCollectionReusabbleView.swift in Sources */,
 				7C6E91E32B2343A100C88351 /* MainViewController.swift in Sources */,
 				7C6E91FD2B23684800C88351 /* BaseView.swift in Sources */,
@@ -360,11 +376,15 @@
 				7C6E91E72B2343B700C88351 /* MainInteractor.swift in Sources */,
 				7C6E91EB2B2343CD00C88351 /* MainConfigurator.swift in Sources */,
 				7C6E91EF2B23543600C88351 /* BaseViewController.swift in Sources */,
+				7C5F613B2B2A4E3D004767D6 /* FindConfigurator.swift in Sources */,
 				7CED6A472B28E0C400704A3C /* Location.swift in Sources */,
+				7C5F61392B2A4E2F004767D6 /* FindRouter.swift in Sources */,
 				7C6E91F92B23607C00C88351 /* UIColorExt.swift in Sources */,
+				7C5F61352B2A4E13004767D6 /* FindPresenter.swift in Sources */,
 				7C6E91E52B2343AE00C88351 /* MainPresenter.swift in Sources */,
 				7C6E92062B24502500C88351 /* UIViewControllerExt.swift in Sources */,
 				7CED6A3B2B276A9700704A3C /* HourlyTempCollectionCell.swift in Sources */,
+				7C5F61372B2A4E22004767D6 /* FindInteractor.swift in Sources */,
 				7C6E91E92B2343C000C88351 /* MainRouter.swift in Sources */,
 				7CED6A402B28661300704A3C /* InfoHourlyCollectionView.swift in Sources */,
 				7CED6A4B2B28E25200704A3C /* WeatherServiceError.swift in Sources */,

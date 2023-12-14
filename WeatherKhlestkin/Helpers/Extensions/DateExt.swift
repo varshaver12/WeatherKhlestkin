@@ -53,7 +53,7 @@ extension Date {
     
     static func getHHFormat(timestamp: String, timeZone: Int) -> String {
         let date = convertToUTCDate(from: timestamp)
-        return convertToLocalTimeString(date: date, timeZone: timeZone, dateFormat: "HH'h'")
+        return convertToLocalTimeString(date: date, timeZone: timeZone, dateFormat: "HH:mm'")
     }
     
     static func getWeekDay(timestamp: String, timeZone: Int) -> String {

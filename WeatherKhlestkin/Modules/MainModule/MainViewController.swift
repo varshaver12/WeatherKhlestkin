@@ -7,8 +7,6 @@
 
 import UIKit
 
-
-
 protocol MainViewProtocol: AnyObject {
     func reloadCollectionView()
     func setupUI(with currentWeather: [CurrentWeather], cityName: String)
@@ -79,7 +77,8 @@ final class MainViewController: BaseViewController {
             
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            collectionView.topAnchor.constraint(equalTo: mainTopView.bottomAnchor)
+            collectionView.topAnchor.constraint(equalTo: mainTopView.bottomAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
 }
@@ -96,12 +95,12 @@ extension MainViewController: MainViewProtocol {
         DispatchQueue.main.async {
             self.mainTopView.configure(cityName: cityName, currentWeather: currentWeather)
             
-            self.collectionView.hourlyCollectionDidLoad = { header in
+            self.collectionView.hourlyCollectionDidLoad = { collectionView in
                 
-                header.hourlyCollectionView.hourlyTempCollectionCellDidLoad = { cell, indexPath in
+                collectionView.hourlyCollectionView.hourlyTempCollectionCellDidLoad = { cell, indexPath in
                     cell.configureCell(currentWeather: currentWeather, item: indexPath.item)
                 }
-                header.hourlyCollectionView.reloadData()
+                collectionView.hourlyCollectionView.reloadData()
                 
             }
             

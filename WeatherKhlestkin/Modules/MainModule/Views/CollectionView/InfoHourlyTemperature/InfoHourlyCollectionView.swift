@@ -17,11 +17,7 @@ class InfoHourlyCollectionView: UICollectionView {
     
     //MARK: - CallBack
     
-    var hourlyTempCollectionCellDidLoad: ((HourlyTempCollectionCell, IndexPath) -> Void)? {
-        willSet {
-            print("🧘🏻‍♂️🧘🏻‍♂️🧘🏻‍♂️🧘🏻‍♂️")
-        }
-    }
+    var hourlyTempCollectionCellDidLoad: ((HourlyTempCollectionCell, IndexPath) -> Void)?
     
     //MARK: - Init
     
@@ -53,7 +49,6 @@ extension InfoHourlyCollectionView {
 
 extension InfoHourlyCollectionView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print("return 24🧘🏻‍♂️")
         return 24
     }
     
@@ -68,9 +63,7 @@ extension InfoHourlyCollectionView: UICollectionViewDataSource {
         
         if let hourlyCellDidLoad = self.hourlyTempCollectionCellDidLoad {
             hourlyCellDidLoad(cell, indexPath)
-            print("🧘🏻‍♂️🧘🏻‍♂️🧘🏻‍♂️🧘🏻‍♂️🧘🏻‍♂️")
         } else {
-            print("🧘🏻‍♂️🧘🏻‍♂️🧘🏻‍♂️🧘🏻‍♂️🧘🏻‍♂️")
             return cell
         }
         
