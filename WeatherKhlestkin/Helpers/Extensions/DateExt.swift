@@ -9,20 +9,14 @@ import UIKit
 
 extension Date {
     
-    func minutes(from date: Date) -> Int {
-        return Calendar.current.dateComponents([.minute], from: date, to: self).minute ?? 0
-    }
-    
     static func calcuateGMT(time: Int) -> String {
-        // time -> 7200(France)
+
         let timeZone = abs(time / 3600)
         let compare = time < 0 ? "-" : "+"
         
         if timeZone < 10 {
-            // GMT+08, GMT-08
             return "GMT\(compare)0\(timeZone)"
         } else {
-            // GMT+10, GMT-11
             return "GMT\(compare)\(timeZone)"
         }
     }

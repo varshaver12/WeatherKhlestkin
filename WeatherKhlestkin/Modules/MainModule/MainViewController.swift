@@ -53,7 +53,7 @@ final class MainViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        configureAppearance()
         presenter?.viewWillAppear()
     }
     

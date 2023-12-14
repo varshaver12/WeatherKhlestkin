@@ -31,11 +31,11 @@ class FindPresenter {
 extension FindPresenter: FindPresenterProtocol {
     
     func viewDidLoad() {
-        interactor?.deliverDelegate()
+        interactor?.setDelegate()
     }
     
     func numberOfRows(in section: Int) -> Int {
-        guard let numberOfRows = interactor?.locationSearchResultsCount() else { return 0 }
+        guard let numberOfRows = interactor?.searchResultsCount() else { return 0 }
         return numberOfRows
     }
     
@@ -44,7 +44,7 @@ extension FindPresenter: FindPresenterProtocol {
     }
     
     func didSelectTableViewRow(at indexPath: IndexPath) {
-        interactor?.saveSelectedLocationData(indexPath: indexPath)
+        interactor?.saveSelectedResult(indexPath: indexPath)
     }
     
     func textDidChange(searchText: String) {
@@ -59,6 +59,6 @@ extension FindPresenter: FindInteractorOutputProtocol {
     }
     
     func popToRootViewController() {
-        router?.popToRootViewController(view: view)
+        router?.popToMainViewController(view: view)
     }
 }

@@ -9,14 +9,8 @@ import UIKit
 
 final class MainTopView: BaseView {
     
-    // MARK: - Callback
-    
     var findButtonDidTap: (() -> ())?
 
-    
-    
-    //MARK: - Properties
-    
     private let configuration = UIImage.SymbolConfiguration(pointSize: 22, weight: .regular, scale: .default)
     private lazy var findLocationButton: UIButton = {
         let button = UIButton()
@@ -32,6 +26,7 @@ final class MainTopView: BaseView {
         label.font = Resouces.Fonts.helvelticaRegular(with: 25)
         label.textColor = Resouces.Colors.cityName
         label.textAlignment = .center
+        label.numberOfLines = 0
         return label
     }()
     private lazy var temperature: UILabel = {
@@ -49,8 +44,6 @@ final class MainTopView: BaseView {
         return label
     }()
 }
-
-//MARK: - Setup Views
 
 extension MainTopView {
     override func setupViews() {
@@ -96,8 +89,6 @@ extension MainTopView {
     }
 }
 
-//MARK: - Configure View
-
 extension MainTopView {
     func configure(cityName: String, currentWeather: [CurrentWeather]) {
         guard let firstData = currentWeather.first else { return }
@@ -107,8 +98,6 @@ extension MainTopView {
         self.temperatureNote.text = firstData.description
     }
 }
-
-//MARK: - Selector
 
 @objc extension MainTopView {
 

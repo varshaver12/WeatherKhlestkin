@@ -9,17 +9,7 @@ import UIKit
 
 class HourlyTempCollectionCell: UICollectionViewCell {
     
-    //MARK: - UI Metrics
-    
-    private struct UI {
-        static let labelHeight = CGFloat(15)
-        static let miniMargin = CGFloat(5)
-        static let basicMargin = CGFloat(10)
-    }
-    
-    //MARK: - Properties
-    
-    // Ветер
+
     private lazy var hourLabel: UILabel = {
         let label = UILabel()
         label.font = Resouces.Fonts.helvelticaRegular(with: 14)
@@ -30,10 +20,9 @@ class HourlyTempCollectionCell: UICollectionViewCell {
     private lazy var weatherImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
-        imageView.image = UIImage(systemName: "wind")
         return imageView
     }()
-    // Давление
+
     private lazy var temperatureLabel: UILabel = {
         let label = UILabel()
         label.font = Resouces.Fonts.helvelticaRegular(with: 14)
@@ -41,9 +30,7 @@ class HourlyTempCollectionCell: UICollectionViewCell {
         label.textAlignment = .left
         return label
     }()
-    
-    //MARK: - Init
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         configureAppearance()
@@ -55,8 +42,6 @@ class HourlyTempCollectionCell: UICollectionViewCell {
         super.init(coder: aDecoder)
     }
 }
-
-//MARK: - Setup Views
 
 extension HourlyTempCollectionCell {
     
@@ -76,23 +61,21 @@ extension HourlyTempCollectionCell {
         NSLayoutConstraint.activate([
             hourLabel.topAnchor.constraint(equalTo: topAnchor),
             hourLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-            hourLabel.heightAnchor.constraint(equalToConstant: UI.labelHeight),
+            hourLabel.heightAnchor.constraint(equalToConstant: 15),
             
-            weatherImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: UI.basicMargin),
-            weatherImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -UI.basicMargin),
-            weatherImageView.topAnchor.constraint(equalTo: hourLabel.bottomAnchor, constant: UI.basicMargin),
-            weatherImageView.bottomAnchor.constraint(equalTo: temperatureLabel.topAnchor, constant: -UI.basicMargin),
+            weatherImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
+            weatherImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
+            weatherImageView.topAnchor.constraint(equalTo: hourLabel.bottomAnchor, constant: 10),
+            weatherImageView.bottomAnchor.constraint(equalTo: temperatureLabel.topAnchor, constant: -10),
             
             temperatureLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-            temperatureLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -UI.miniMargin),
-            temperatureLabel.heightAnchor.constraint(equalToConstant: UI.labelHeight)
+            temperatureLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -5),
+            temperatureLabel.heightAnchor.constraint(equalToConstant: 15)
         ])
         
 
     }
 }
-
-//MARK: - Configure Cell
 
 extension HourlyTempCollectionCell {
     

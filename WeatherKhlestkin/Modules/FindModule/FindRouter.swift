@@ -7,14 +7,13 @@
 
 import UIKit
 
-// MARK: Router Input (Presenter -> Router)
 protocol FindRouterProtocol {
-    func popToRootViewController(view: FindViewProtocol?)
+    func popToMainViewController(view: FindViewProtocol?)
 }
 
 class FindRouter: FindRouterProtocol {
     
-    func popToRootViewController(view: FindViewProtocol?) {
+    func popToMainViewController(view: FindViewProtocol?) {
         
         let viewController = view as! FindViewController
         viewController.navigationController?.popToRootViewController(animated: true)

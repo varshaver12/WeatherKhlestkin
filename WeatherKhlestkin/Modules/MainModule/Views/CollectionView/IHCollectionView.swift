@@ -8,22 +8,9 @@
 import  UIKit
 
 class IHCollectionView: UICollectionView {
-    
-    //MARK: - UI Metrics
-    
-    private struct UI {
-        static let dailyCellHeightRatio = CGFloat(0.42)
-        static let summaryCellHeightRatio = CGFloat(0.1)
-        static let subInfoCellHeightRatio = CGFloat(0.25)
-    }
-    
-    // MARK: - Callback
-    
+
     var hourlyCollectionDidLoad: ((InfoHourlyCollectionReusabbleView) -> Void)? 
 
-    
-    //MARK: - Init
-    
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
         super.init(frame: frame, collectionViewLayout: layout)
         setupViews()
@@ -39,8 +26,6 @@ class IHCollectionView: UICollectionView {
     }
 }
 
-//MARK: - Setup Views
-
 extension IHCollectionView {
     
     private func setupViews() {
@@ -50,17 +35,15 @@ extension IHCollectionView {
         showsVerticalScrollIndicator = false
         backgroundColor = .clear
         
-        configureSubViews()
+        configureViews()
     }
     
-    private func configureSubViews() {
+    private func configureViews() {
         register(InfoHourlyCollectionReusabbleView.self,
                  forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
                  withReuseIdentifier: String(describing: InfoHourlyCollectionReusabbleView.self))
     }
 }
-
-//MARK: - UICollectionViewDataSource
 
 extension IHCollectionView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
@@ -87,8 +70,6 @@ extension IHCollectionView: UICollectionViewDataSource {
         return UICollectionViewCell()
     }
 }
-
-//MARK: - UICollectionViewDelegateFlowLayout
 
 extension IHCollectionView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

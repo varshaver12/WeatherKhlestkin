@@ -22,9 +22,10 @@ final class MainRouter {
 
 extension MainRouter: MainRouterProtocol {
     func pushToFindViewController(view: MainViewProtocol) {
+        let vc = view as! MainViewController
         let findViewController = FindCofigurator.createFindModule()
 
-        viewController.navigationController?.pushViewController(findViewController, animated: true)
+        vc.navigationController?.pushViewController(findViewController, animated: true)
     }
     
 }

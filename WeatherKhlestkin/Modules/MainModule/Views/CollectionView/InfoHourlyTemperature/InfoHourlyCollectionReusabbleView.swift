@@ -9,8 +9,6 @@ import UIKit
 
 class InfoHourlyCollectionReusabbleView: UICollectionReusableView {
     
-    //MARK: - Properties
-    
     lazy var hourlyCollectionView: InfoHourlyCollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -20,11 +18,10 @@ class InfoHourlyCollectionReusabbleView: UICollectionReusableView {
         return view
     }()
     
-    //MARK: - Init
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupViews()
+        setupConstraints()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -32,14 +29,11 @@ class InfoHourlyCollectionReusabbleView: UICollectionReusableView {
     }
 }
 
-//MARK: - Setup Views
-
 extension InfoHourlyCollectionReusabbleView {
     
     private func setupViews() {
         backgroundColor = .clear
         setupView(hourlyCollectionView)
-        setupConstraints()
     }
     
     private func setupConstraints() {

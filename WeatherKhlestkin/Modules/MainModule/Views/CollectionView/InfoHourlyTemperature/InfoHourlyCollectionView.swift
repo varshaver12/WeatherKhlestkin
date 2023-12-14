@@ -9,17 +9,7 @@ import UIKit
 
 class InfoHourlyCollectionView: UICollectionView {
     
-    //MARK: - UI Metrics
-    
-    private struct UI {
-        static let cellWidth = CGFloat(65)
-    }
-    
-    //MARK: - CallBack
-    
     var hourlyTempCollectionCellDidLoad: ((HourlyTempCollectionCell, IndexPath) -> Void)?
-    
-    //MARK: - Init
     
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
         super.init(frame: frame, collectionViewLayout: layout)
@@ -32,8 +22,6 @@ class InfoHourlyCollectionView: UICollectionView {
     }
 }
 
-//MARK: - Setup Views
-
 extension InfoHourlyCollectionView {
     
     private func setupViews() {
@@ -45,7 +33,7 @@ extension InfoHourlyCollectionView {
     }
 }
 
-//MARK: - UICollectionViewDataSource & UICollectionViewDelegateFlowLayout
+//MARK: - UICollectionViewDataSource
 
 extension InfoHourlyCollectionView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -71,10 +59,11 @@ extension InfoHourlyCollectionView: UICollectionViewDataSource {
     }
 }
 
+//MARK: - UICollectionViewDelegateFlowLayout
 extension InfoHourlyCollectionView: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: UI.cellWidth, height: self.frame.height)
+        return CGSize(width: 65, height: self.frame.height)
     }
 }
 
