@@ -15,6 +15,7 @@
 ![Снимок экрана 2023-12-19 в 18 41 47](https://github.com/varshaver12/WeatherKhlestkin/assets/143330929/0e0cd90f-449a-45a6-b713-f952fce4ca3a)
 ---
 Для поиска погоды в другом городе, необходимо нажать на лупу в левом верхнем углу.
+
 ![Снимок экрана 2023-12-19 в 18 42 12](https://github.com/varshaver12/WeatherKhlestkin/assets/143330929/713f16e4-746e-4818-aefa-8d4ccbf8e133)
 ![Снимок экрана 2023-12-19 в 18 42 23](https://github.com/varshaver12/WeatherKhlestkin/assets/143330929/1a43fec1-6283-4ca2-9309-63d8c1426b65)
 
