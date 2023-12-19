@@ -20,5 +20,9 @@
 ![Снимок экрана 2023-12-19 в 18 42 12](https://github.com/varshaver12/WeatherKhlestkin/assets/143330929/713f16e4-746e-4818-aefa-8d4ccbf8e133)
 ![Снимок экрана 2023-12-19 в 18 42 23](https://github.com/varshaver12/WeatherKhlestkin/assets/143330929/1a43fec1-6283-4ca2-9309-63d8c1426b65)
 
-
-
+---
+Технологии:
+- Язык: Swift
+- Фреймворк: UIKit
+- Версия iOS: от 15
+- Архитектура: VIPER
