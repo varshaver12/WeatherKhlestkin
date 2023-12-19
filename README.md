@@ -1,4 +1,5 @@
 Погода
+
 ![Снимок экрана 2023-12-19 в 18 41 47](https://github.com/varshaver12/WeatherKhlestkin/assets/143330929/536f5e94-18fc-4488-9fea-1cfa9869fb95)
 ---
 В чем польза этого приложения ?
