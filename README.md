@@ -10,6 +10,7 @@
 ![Снимок экрана 2023-12-19 в 18 44 05](https://github.com/varshaver12/WeatherKhlestkin/assets/143330929/70f67bb0-8f19-4b46-8de6-ea74b7e26c89)
 ---
 При запуске приложения отображается информация по текущей погоде по геопозиции пользователя.
+
 ![Снимок экрана 2023-12-19 в 18 41 11](https://github.com/varshaver12/WeatherKhlestkin/assets/143330929/5c08c066-1dd1-4f14-84df-77fc7a31d5a0)
 ![Снимок экрана 2023-12-19 в 18 41 47](https://github.com/varshaver12/WeatherKhlestkin/assets/143330929/0e0cd90f-449a-45a6-b713-f952fce4ca3a)
 ---
